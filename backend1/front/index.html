@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <style>
+       
+        #show__product {
+            width:80%;
+            margin:auto;
+            display: grid;
+            grid-template-columns: repeat(4,24%);
+            grid-gap: 1.3%;
+        }
+        #show__product img {
+            width:200px;
+            height:150px;
+        }
+        .cls {
+            display: flex;
+            width:100%;
+            justify-content: space-around;
+        }
+        .cls {
+            margin:30px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="show__product"></div>
+
+    <div class="cls">
+        
+        <div>
+            <h2>Add Products</h2>
+        <input type="number" id="id" placeholder="id"> <br>
+        <input type="text" id="name" placeholder="name"> <br>
+        <input type="number" id="price" placeholder="price"> <br>
+        <input type="text" id="img" placeholder="image"> <br>
+        <button onclick="addProduct()">Add Product</button>
+        </div>
+
+        
+
+        <div>
+            <h2>Delete Product</h2>
+            <input type="number" id="product_id"> <br>
+            <button onclick="deleteProduct()">Delete Product</button>
+        </div>
+
+
+        <div>
+            <h2>Update Product Details</h2>
+            <input type="number" id="pro_id" placeholder="id"> <br>
+        <input type="text" id="pro_name" placeholder="name"> <br>
+        <input type="number" id="pro_price" placeholder="price"> <br>
+        <input type="text" id="pro_img" placeholder="image"> <br>
+        <button onclick="updateProduct()">Update Product Details</button>
+        </div>
+
+        </div>
+</body>
+</html>
+
+<script>
+
+    let container = document.getElementById("show__product")
+
+    async function getData() {
+
+        let res = await fetch(`http://localhost:5000/api/products`);
+        let data = await res.json()
+       append(data)
+        console.log(data)
+    }
+    getData()
+
+    function append(prod) {
+        prod.forEach(({name,price,img}) => {
+            let div = document.createElement("div")
+            
+            let pro_name = document.createElement("p")
+            pro_name.textContent = name
+
+            let pro_price = document.createElement("p")
+            pro_price.textContent = price
+
+            let image = document.createElement("img")
+            image.src = img
+
+            div.append(image,pro_name,pro_price)
+            container.append(div)
+        })
+    }
+
+    async function addProduct() {
+
+        let data = {
+            id:document.getElementById("id").value,
+            name:document.getElementById("name").value,
+            price:document.getElementById("price").value,
+            img:document.getElementById("img").value
+        };
+
+        try{
+
+      let response = await fetch(`http://localhost:5000/api/products` , {
+          method: "POST",
+          body:JSON.stringify(data),
+          headers: {
+              "Content-Type": "application/json",
+          },
+      });
+
+      let d = await response.json()
+      console.log("d:" , d)
+    }
+    catch(e) {
+        console.log("e:" , e)
+    }
+    }
+
+
+    async function deleteProduct() {
+
+        let id = document.getElementById("product_id").value
+
+        let response = await fetch(`http://localhost:5000/api/products/${id}` , {
+
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+
+        })
+    
+        
+    
+    }
+
+    async function updateProduct() {
+
+        try{
+        let update =  {
+            id:document.getElementById("pro_id").value,
+            name:document.getElementById("pro_name").value,
+            price:document.getElementById("pro_price").value,
+            img:document.getElementById("pro_img").value
+        }
+        let id = document.getElementById("pro_id").value
+        let response = await fetch(`http://localhost:5000/api/products/${id}` , {
+
+        method: "PUT",
+        body:JSON.stringify(update),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        })
+
+        let d = await response.json()
+        console.log(d)
+    } catch(e) {
+        console.log(e)
+    }
+
+    }
+
+
+</script>
