@@ -9,4 +9,4 @@ function Factorial(n){
 }
 
 
-console.log(Factorial(5))
+console.log(Factorial(1))
