@@ -1,9 +1,0 @@
------>>To initiaise project
-
-Go to terminal >> npm init -y >> press enter till >> package.json file created
-
-
------->>  To install express
-
-Go to terminal >> npm install express --save
-
