@@ -19,7 +19,7 @@ function runProgram(input) {
     console.log(numberOfWaysProblem(n))
    
   }
-  if (process.env.USERNAME === "akshra") {
+  if (process.env.USERNAME === "Gaurav") {
     runProgram(`4`);
   } else {
     process.stdin.resume();

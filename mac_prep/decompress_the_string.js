@@ -1,18 +1,18 @@
-// var str = "a3b2";
+var str = "a3b2";
 
-// // out = aaabb
+// out = aaabb
 
-// var out = ""
+var out = ""
 
-// for(var i = 1;i <str.length;i=i+2){
-//     var st = +str[i]
-//     for(var j = 1;j<=st;j++){
-//         out = out + str[i-1]
-//     }
+for(var i = 1;i <str.length;i=i+2){
+    var st = +str[i]
+    for(var j = 1;j<=st;j++){
+        out = out + str[i-1]
+    }
     
-// }
+}
 
-// console.log(out)
+console.log(out)
 
 
 function runProgram(input) {
