@@ -22,7 +22,7 @@ console.log(input)
   
   }
   
-  if (process.env.USERNAME === "Gaurav") {
+  if (process.env.USERNAME === "hp") {
   runProgram(`a3b2`);
   } else {
   process.stdin.resume();

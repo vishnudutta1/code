@@ -7,9 +7,11 @@ for(var i = 0;i <arr.length;i++){
         new_arr.push(arr[i])
     }
 
-    else if(arr[i]<arr[i+1]){
+    else if(arr[i]<arr[i+1] && ){
         new_arr.push(arr[i])
     }
+
+
 
     
 }

@@ -20,4 +20,4 @@ function swap(arr,i,curr){
     arr[i] = arr[curr];
     arr[curr] = temp;
 }
-
+permutation(arr,[],0)
