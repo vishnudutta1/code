@@ -1,10 +1,10 @@
-var arr = [1,2,3,4,5];
+var arr = "masai"
 
 for(var i = 0;i <arr.length;i++){
-    var array = []
+    var array = ""
 
     for(var j = i;j<arr.length;j++){
-        array.push(arr[j])
+        array = array + arr[j]
         console.log(array)
     }
 }
