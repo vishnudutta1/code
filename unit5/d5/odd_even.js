@@ -27,20 +27,38 @@
 function OddEvenSepra(N, arr, Q) {
     //write code here
       var evn = []
+
+
+
       var od = []
+
+
+
   
       for (var i = 0; i < N; i++){
+
+
           if (arr[i] % 2 == 0){
+
+
               evn.push(arr[i])
+
+
           }else {
+
+
               od.push(arr[i])
           }
       }
   
       if (Q === 1){
          console.log(evn.concat(od).join(' '))
+
+
       }else if(Q === 2){  
           console.log(od.concat(evn).join(' '))
+
+          
       }
   }
   
