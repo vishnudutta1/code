@@ -10,7 +10,7 @@ function Palindrom(str,l,r){
     return Palindrom(str,l+1,r-1)
 }
 
-var str = "aba"
+var str = "abaa"
 var l  = 0;
 var r = 2;
 
